@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="food_orderDAO" class="com.spring.dao.Food_OrderDAOImpl"
+		p:sqlSession-ref="sqlSession" />
+		
+	<bean id="searchfood_orderDAO"
+		  class="com.spring.dao.serch.Food_OrderDAOImpl"
+		  p:sqlSession-ref="sqlSession" />
+
+	<bean id="food_orderService"
+		class="com.spring.service.Food_OrderServiceImpl"
+		p:food_orderDAO-ref="food_orderDAO" />
+		
+	<bean id= "searchfood_orderService"
+		  class="com.spring.service.SeachFood_OrderServiceImpl"
+		  p:searchFood_OrderDAO-ref="searchFood_OrderDAO"
+		  p:food_orderDAO-ref="food_orderDAO" />
+
+
+</beans>
