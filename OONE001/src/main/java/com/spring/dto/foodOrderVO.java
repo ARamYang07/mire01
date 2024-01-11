@@ -2,15 +2,22 @@ package com.spring.dto;
 
 import java.util.Date;
 
-public class Food_OrderVO {
+public class foodOrderVO {
 	
 	private String order_menu; //주문내역
 	private String order_price; //주문가격
 	private Date order_time; //주문일자
-	private String user_id; //고객ID
-	private String restunt_id; //매장ID
+	private String user_id; //고객ID			외래키
+	private String restrunt_id; //매장ID		외래키
+	private String order_id; //주문ID			기본키
 	
 	
+	public String getOrder_id() {
+		return order_id;
+	}
+	public void setOrder_id(String order_id) {
+		this.order_id = order_id;
+	}
 	public String getOrder_menu() {
 		return order_menu;
 	}
@@ -35,11 +42,11 @@ public class Food_OrderVO {
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
-	public String getRestunt_id() {
-		return restunt_id;
+	public String getRestrunt_id() {
+		return restrunt_id;
 	}
-	public void setRestunt_id(String restunt_id) {
-		this.restunt_id = restunt_id;
+	public void setRestrunt_id(String restrunt_id) {
+		this.restrunt_id = restrunt_id;
 	}
 	
 }

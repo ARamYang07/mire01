@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="foodOrder-Mapper">
+  
+	<select id="selectfoodOrderList" resultType="foodOrder">
+		select * from foodOrder
+	</select>
+	
+	<select id="selectfoodOrderById" resultType="foodOrder">
+		select * from foodOrder
+		where order_id=#{order_id}
+	</select>
+	
+	<insert id="insertfoodOrder" parameterType="foodOrder">
+		insert into
+		foodOrder(order_menu, order_price, order_id)
+		values(#{order_menu}, #{order_price}, #{order_id})
+	</insert>
+	<update id="updatefoodOrder" parameterType="foodOrder">
+		update foodOrder
+		set
+		order_menu=#{order_menu}, order_price=#{order_price}
+		where order_id=#{order_id}
+	</update>
+	<delete id="deletefoodOrder" parameterType="str">
+		delete from foodOrder
+		where order_id=#{order_id}
+	</delete>
+</mapper>
+
+<!-- 
+
+order_time, 
+#{order_time}, 
+order_time=#{order_time}, 
+
+ -->

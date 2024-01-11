@@ -2,23 +2,23 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-	<bean id="food_orderDAO" class="com.spring.dao.Food_OrderDAOImpl"
+	<bean id="foodOrderDAO" class="com.spring.dao.foodOrderDAOImpl"
 		p:sqlSession-ref="sqlSession" />
 		
-	<bean id="searchfood_orderDAO"
-		  class="com.spring.dao.serch.Food_OrderDAOImpl"
+	<bean id="searchfoodOrderDAO"
+		  class="com.spring.dao.foodOrderDAOImpl"
 		  p:sqlSession-ref="sqlSession" />
 
-	<bean id="food_orderService"
-		class="com.spring.service.Food_OrderServiceImpl"
-		p:food_orderDAO-ref="food_orderDAO" />
+	<bean id="foodOrderService"
+		class="com.spring.service.foodOrderServiceImpl"
+		p:foodOrderDAO-ref="foodOrderDAO" />
 		
-	<bean id= "searchfood_orderService"
-		  class="com.spring.service.SeachFood_OrderServiceImpl"
-		  p:searchFood_OrderDAO-ref="searchFood_OrderDAO"
-		  p:food_orderDAO-ref="food_orderDAO" />
+
 
 
 </beans>

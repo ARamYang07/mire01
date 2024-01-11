@@ -8,7 +8,7 @@
 
 	<typeAlias type="java.lang.String" alias="str" />
 	<typeAlias type="java.lang.Integer" alias="int" />
-	<typeAlias type="com.spring.dto.Food_OrderVO" alias="food_order" />
+	<typeAlias type="com.spring.dto.foodOrderVO" alias="foodOrder" />
 	
 </typeAliases>
 
