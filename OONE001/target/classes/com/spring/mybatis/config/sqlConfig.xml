@@ -9,7 +9,8 @@
 	<typeAlias type="java.lang.String" alias="str" />
 	<typeAlias type="java.lang.Integer" alias="int" />
 	<typeAlias type="com.spring.dto.foodOrderVO" alias="foodOrder" />
-	
+	<typeAlias type="com.spring.command.PageMaker" alias="pageMaker"/>
+
 </typeAliases>
 
 </configuration>

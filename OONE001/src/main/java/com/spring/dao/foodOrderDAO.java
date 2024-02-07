@@ -9,7 +9,7 @@ public interface foodOrderDAO {
 	
 	List<foodOrderVO> selectList()throws SQLException;
 	foodOrderVO selectfoodOrderById(String order_id)throws SQLException;
-	void insertfoodOrder(foodOrderVO foodorder)throws SQLException;
-	void updatefoodOrder(foodOrderVO foodorder)throws SQLException;
+	void insertfoodOrder(foodOrderVO foodOrder)throws SQLException;
+	void updatefoodOrder(foodOrderVO foodOrder)throws SQLException;
 	void deletefoodOrder(String order_id)throws SQLException;
 }

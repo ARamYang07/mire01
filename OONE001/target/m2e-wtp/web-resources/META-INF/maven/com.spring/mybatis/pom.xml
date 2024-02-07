@@ -157,7 +157,6 @@
 			<version>1</version>
 		</dependency>
 				
-		<!-- Servlet -->
 		<!-- servlet-api -->
 		<dependency>
 		    <groupId>javax.servlet</groupId>

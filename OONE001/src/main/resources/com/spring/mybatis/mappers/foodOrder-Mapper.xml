@@ -2,39 +2,68 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="foodOrder-Mapper">
-  
-	<select id="selectfoodOrderList" resultType="foodOrder">
-		select * from foodOrder
+
+<mapper namespace="foodOrder-Mapper">
+
+	<sql id="search">
+		<if test="searchType == 'u'.toString()">
+			where user_id like '%'||#{keyword}||'%'
+		</if>
+		<if test="searchType == 'm'.toString()">
+			where order_menu like '%'||#{keyword}||'%'
+		</if>
+		<if test="searchType == 'o'.toString()">
+			where order_id like '%'||#{keyword}||'%'
+		</if>
+		<if test="searchType == 'r'.toString()">
+			where restrunt_id like '%'||#{keyword}||'%'
+		</if>
+	</sql>
+
+	<select id="selectSearchfoodOrderList" parameterType="pageMaker"
+		resultType="foodOrder">
+		select *
+		from foodOrder
+		<include refid="search" />
+		order by order_time desc
 	</select>
 	
+	<select id="selectSearchfoodOrderListCount"
+		parameterType="pageMaker" resultType="int">
+		select count(*)
+		from foodOrder
+		<include refid="search" />
+	</select>
+
+	<select id="selectfoodOrderList" resultType="foodOrder">
+		select * from
+		foodOrder
+	</select>
+
 	<select id="selectfoodOrderById" resultType="foodOrder">
 		select * from foodOrder
 		where order_id=#{order_id}
 	</select>
 	
+	<select id="getNextOrderId" resultType="java.lang.String">
+		SELECT order_id_sequence.NEXTVAL FROM DUAL
+	</select>
+
 	<insert id="insertfoodOrder" parameterType="foodOrder">
-		insert into
-		foodOrder(order_menu, order_price, order_id)
-		values(#{order_menu}, #{order_price}, #{order_id})
+		INSERT INTO foodOrder (user_id, restrunt_id, order_menu, order_price,  order_id)
+		VALUES (#{user_id}, #{restrunt_id},#{order_menu}, #{order_price}, #{order_id})
 	</insert>
+
 	<update id="updatefoodOrder" parameterType="foodOrder">
-		update foodOrder
-		set
-		order_menu=#{order_menu}, order_price=#{order_price}
+		update foodOrder set
+		order_menu=#{order_menu}, order_price=#{order_price}, 	user_id=#{user_id}, restrunt_id=#{restrunt_id}
 		where order_id=#{order_id}
 	</update>
+
 	<delete id="deletefoodOrder" parameterType="str">
 		delete from foodOrder
 		where order_id=#{order_id}
 	</delete>
 </mapper>
 
-<!-- 
 
-order_time, 
-#{order_time}, 
-order_time=#{order_time}, 
-
- -->

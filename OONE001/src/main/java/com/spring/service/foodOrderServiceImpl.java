@@ -10,10 +10,11 @@ public class foodOrderServiceImpl implements foodOrderService{
 
 	private foodOrderDAO foodOrderDAO;
 	
-	public void setfoodOrderDAO(foodOrderDAO foodOrderDAO) {
+	public void setFoodOrderDAO(foodOrderDAO foodOrderDAO) {
 		this.foodOrderDAO = foodOrderDAO;
 	}
-	
+
+
 	@Override
 	public List<foodOrderVO> list() throws SQLException {
 		return foodOrderDAO.selectList();

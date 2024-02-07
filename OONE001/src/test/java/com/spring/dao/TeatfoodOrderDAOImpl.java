@@ -29,7 +29,7 @@ public class TeatfoodOrderDAOImpl {
 	@Test
 	public void testSelectfoodOrderList()throws Exception{
 		List<foodOrderVO> foodOrderList = foodOrderDAO.selectList();
-		Assert.assertEquals(1, foodOrderList.size());
+		Assert.assertEquals(3, foodOrderList.size());
 	}
 	
 	@Test

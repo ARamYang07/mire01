@@ -7,44 +7,41 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.spring.dto.foodOrderVO;
 
-public class foodOrderDAOImpl implements foodOrderDAO{
-	
-	private SqlSession session;
-	public void setSqlSession(SqlSession session) {
-		this.session= session;
-	}
+public class foodOrderDAOImpl implements foodOrderDAO {
 
+    private SqlSession session;
 
-	@Override
-	public List<foodOrderVO> selectList() throws SQLException {
-		return session.selectList("foodOrder-Mapper.selectfoodOrderList");
-	}
+    public void setSqlSession(SqlSession session) {
+        this.session = session;
+    }
 
-	@Override
-	public void deletefoodOrder(String order_id) throws SQLException {
-		session.delete("foodOrder-Mapper.deletefoodOrder", order_id);
-	}
+    @Override
+    public List<foodOrderVO> selectList() throws SQLException {
+        return session.selectList("foodOrder-Mapper.selectfoodOrderList");
+    }
 
+    @Override
+    public void deletefoodOrder(String order_id) throws SQLException {
+        session.delete("foodOrder-Mapper.deletefoodOrder", order_id);
+    }
 
-	@Override
-	public foodOrderVO selectfoodOrderById(String order_id) throws SQLException {
-		return session.selectOne("foodOrder-Mapper.selectfoodOrderById", order_id);
-	}
+    @Override
+    public foodOrderVO selectfoodOrderById(String order_id) throws SQLException {
+        return session.selectOne("foodOrder-Mapper.selectfoodOrderById", order_id);
+    }
 
+    @Override
+    public void insertfoodOrder(foodOrderVO foodOrder) throws SQLException {
+        // order_id를 시퀀스에서 가져와서 설정
+        String nextOrderId = session.selectOne("foodOrder-Mapper.getNextOrderId");
+        foodOrder.setOrder_id(nextOrderId);
 
-	@Override
-	public void insertfoodOrder(foodOrderVO foodOrder) throws SQLException {
-		session.insert("foodOrder-Mapper.insertfoodOrder",foodOrder);
-		
-	}
+        // insert 쿼리 실행
+        session.insert("foodOrder-Mapper.insertfoodOrder", foodOrder);
+    }
 
-
-	@Override
-	public void updatefoodOrder(foodOrderVO foodOrder) throws SQLException {
-		session.update("foodOrder-Mapper.updatefoodOrder",foodOrder);
-		
-	}
-	
+    @Override
+    public void updatefoodOrder(foodOrderVO foodOrder) throws SQLException {
+        session.update("foodOrder-Mapper.updatefoodOrder", foodOrder);
+    }
 }
-
-
